@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Circle from './Circle';
 
 function MortgageCalculator() {
   // State variables for input values and calculated result
@@ -28,41 +29,55 @@ function MortgageCalculator() {
   };
 
   return (
-    <div className="container">
-      <h1 className="text-3xl font-bold">HomeSpark Mortgage Calculator</h1>
-      {/* Input fields for loan amount, interest rate, and loan term */}
-      <input
-        type="number"
-        className="input"
-        placeholder="Loan Amount"
-        value={loanAmount}
-        onChange={(e) => setLoanAmount(e.target.value)}
-      />
-      <input
-        type="number"
-        className="input"
-        placeholder="Interest Rate"
-        value={interestRate}
-        onChange={(e) => setInterestRate(e.target.value)}
-      />
-      <input
-        type="number"
-        className="input"
-        placeholder="Loan Term (in years)"
-        value={loanTerm}
-        onChange={(e) => setLoanTerm(e.target.value)}
-      />
-      {/* Button to trigger mortgage calculation */}
-      <button className="btn" onClick={calculateMortgage}>
-        Calculate
-      </button>
-      {/* Display calculated monthly payment if available */}
-      {monthlyPayment && (
-        <div>
-          <h2 className="result">Monthly Payment:</h2>
-          <span className="result">{monthlyPayment}</span>
-        </div>
-      )}
+    <div className="body container">
+      <div className="mortgage-amount container h-96 pt-5 flex">
+        {/* Display calculated monthly payment if available */}
+        {monthlyPayment && (
+          <>
+            <div className="flex items-center">
+              <h2 className="result text-2xl text-left mx-auto">
+                Monthly Payment: ${monthlyPayment}
+              </h2>
+            </div>
+            <div className="flex items-center pl-14">
+              <Circle
+                mortgagePrice={monthlyPayment}
+                mortgage={3000}
+                propertyTax={326.51}
+              />
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="container">
+        {/* Input fields for loan amount, interest rate, and loan term */}
+        <input
+          type="number"
+          className="input"
+          placeholder="Loan Amount"
+          value={loanAmount}
+          onChange={(e) => setLoanAmount(e.target.value)}
+        />
+        <input
+          type="number"
+          className="input"
+          placeholder="Interest Rate"
+          value={interestRate}
+          onChange={(e) => setInterestRate(e.target.value)}
+        />
+        <input
+          type="number"
+          className="input"
+          placeholder="Loan Term (in years)"
+          value={loanTerm}
+          onChange={(e) => setLoanTerm(e.target.value)}
+        />
+        {/* Button to trigger mortgage calculation */}
+        <button className="btn" onClick={calculateMortgage}>
+          Calculate
+        </button>
+      </div>
     </div>
   );
 }
