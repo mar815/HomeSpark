@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import './App.css';
+import MortgageCalculator from './MortgageCalculator';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <h1 className="text-3xl font-bold">
-      HomeSpark
-    </h1>
-  )
+    <>
+      <div className="min-h-screen flex flex-col">
+        <h2 className=" text-3xl font-bold text-left">Homespark</h2>
+        <div className="flex-grow">
+          <MortgageCalculator />
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
